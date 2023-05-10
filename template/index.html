@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDIKSI TAHU BERFORMALIN</title>
+  </head>
+  <body>
+    <div class="container contact-form">
+      <div class="contact-image">
+        <img src="https://png.pngtree.com/png-clipart/20221219/original/pngtree-cartoon-fried-tofu-png-image_8781795.png" alt="#" />
+      </div>
+      <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+        <h3>SELAMAT DATANG DI APLIKASI PREDIKSI TAHU NON FORMALIN DAN TAHU BERFORMALIN</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <img class="img-preview img-fluid mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input"
+                    id="customFile" name="file" accept="image/*" required onchange="previewImage()">
+                <label class="custom-file-label"
+                    for="customFile">{{ label_name if label_name else "Pilih gambar" }}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3>Hasil Prediksi</h3>
+            <p class="text-center">{{ prediction_text }}</p>
+          </div>
+      </div>
+      <h3>design by:sefrina</h3>
+      </form>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          var fileInput = document.getElementsByClassName("custom-file-input");
+
+          for (var i = 0; i < fileInput.length; i++) {
+              var input = fileInput[i];
+              input.addEventListener("change", function(e) {
+                  var files = [];
+                  for (var i = 0; i < $(this)[0].files.length; i++) {
+                      files.push($(this)[0].files[i].name);
+                  }
+                  $(this).next(".custom-file-label").html(files.join(", "));
+              });
+          }
+      });
+    </script>
+    <script>
+      function previewImage() {
+          const image = document.querySelector("#customFile");
+          const imgPreview = document.querySelector(".img-preview");
+
+          imgPreview.style.display = "block";
+
+          /* Perintah untuk ngambil data gambar nya */
+          const oFReader = new FileReader();
+          oFReader.readAsDataURL(image.files[0]);
+
+          oFReader.onload = function(oFREvent) {
+              imgPreview.src = oFREvent.target.result;
+          };
+      }
+    </script>
+  </body>
+</html>
