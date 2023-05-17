@@ -14,8 +14,8 @@
         <img src="https://png.pngtree.com/png-clipart/20221219/original/pngtree-cartoon-fried-tofu-png-image_8781795.png" alt="#" />
       </div>
       <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
-        <h3>SELAMAT DATANG DI APLIKASI PREDIKSI TAHU NON FORMALIN DAN TAHU BERFORMALIN</h3>
-        <div class="row">
+        <h3>Prediksi Tahu Berformalin</h3>
+        <div class="row mb-3">
           <div class="col-md-6">
             <div class="form-group">
               <img class="img-preview img-fluid mb-3">
@@ -34,9 +34,9 @@
             <h3>Hasil Prediksi</h3>
             <p class="text-center">{{ prediction_text }}</p>
           </div>
-      </div>
-      <h3>design by:sefrina</h3>
+        </div>
       </form>
+      <h6 class="text-center pb-4 text-secondary">Design by: Sefrina</h6>
     </div>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
